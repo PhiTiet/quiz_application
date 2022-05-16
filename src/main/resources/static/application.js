@@ -18,8 +18,9 @@ async function checkQuestion(event){
     });
     const body = await response.text();
 
+
     if(body != "empty"){
-        event.style.backgroundColor = body ? "green" : "red";
+        event.style.backgroundColor = body == "true" ? "green" : "red";
     }
     else{
         alert("Don't forget to select an answer ._.");
