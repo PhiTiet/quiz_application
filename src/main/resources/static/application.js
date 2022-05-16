@@ -10,11 +10,20 @@ async function checkQuestion(event){
 
     const response = await fetch("/checkanswer",{
         method: "POST",
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
         body: JSON.stringify(json)
     });
-    const body = await response.json();
+    const body = await response.text();
 
-    event.style.backgroundColor = body ? "green" : "red";
+    if(body != "empty"){
+        event.style.backgroundColor = body ? "green" : "red";
+    }
+    else{
+        alert("Don't forget to select an answer ._.");
+    }
+
 
 }
