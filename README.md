@@ -1,7 +1,7 @@
 # Quiz Application
 
 ## How to run:
-### Run from (fat) jar :
+### Run from (fat) jar:
 ```mvn clean install```
 
 ``` java -jar .\target\quiz-1.jar```
