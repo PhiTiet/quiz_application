@@ -21,12 +21,12 @@ import java.util.HashMap;
 import java.util.List;
 @Controller
 public class QuizController {
-    private String testeroni = "xd";
-    private String apiUrl = "https://opentdb.com/api.php?amount=5";
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final String apiUrl = "https://opentdb.com/api.php?amount=5";
 
-    private ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    private final ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private HashMap<String, String> correctAnswers = new HashMap<>();
 
@@ -66,8 +66,8 @@ public class QuizController {
         if (!jsonNode.has("answer")) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("empty");
         }
-        Boolean result = correctAnswers.get(jsonNode.get("question").textValue()).equals(jsonNode.get("answer").textValue());
+        boolean result = correctAnswers.get(jsonNode.get("question").textValue()).equals(jsonNode.get("answer").textValue());
 
-        return ResponseEntity.status(HttpStatus.OK).body(result.toString());
+        return ResponseEntity.status(HttpStatus.OK).body(Boolean.toString(result));
     }
 }
