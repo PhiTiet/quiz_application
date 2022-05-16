@@ -16,6 +16,11 @@
 
 ```docker run -p8080:8069 -d quiz_application```
 
+## How to use:
+Go to ```http://localhost:8069/questions``` for the questions page (refresh for new ones)
+
+Go to ```http://localhost:8069/error``` to simulate an error happening
+
 ## Assumptions:
 
 - Question provided by api is unique per question string.
